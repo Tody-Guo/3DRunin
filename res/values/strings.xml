@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">com.tware.glrun</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_gl_runin">3D Runin</string>
+
+</resources>
