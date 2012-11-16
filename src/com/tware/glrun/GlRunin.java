@@ -33,6 +33,7 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 /**
@@ -52,6 +53,8 @@ public class GlRunin extends Activity {
         mGLSurfaceView = new GLSurfaceView(this);
         mGLSurfaceView.setRenderer(new CubeRenderer(false));
         setContentView(mGLSurfaceView);
+        
+        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); 
         
         timeView = new TextView(this);
         timeView.setText("Hello world");
