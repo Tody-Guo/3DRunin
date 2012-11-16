@@ -19,12 +19,15 @@ package com.tware.glrun;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.opengl.GLSurfaceView;
+import android.opengl.GLUtils;
 import android.util.Log;
 
 /**
@@ -44,12 +47,11 @@ class CubeRenderer implements GLSurfaceView.Renderer {
          * glClear().
          */
 
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+    	gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 
         /*
          * Now we're ready to draw some 3D objects
          */
-
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         gl.glLoadIdentity();
         gl.glTranslatef(0, 0, -3.0f);
@@ -67,23 +69,11 @@ class CubeRenderer implements GLSurfaceView.Renderer {
         mCube.draw(gl);
 
         mAngle += 1.2f;
-    }
-    public void initBitmap() {
-        String mstrTitle = "文字渲染到Bitmap!";
-        bmp = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
-        Canvas canvasTemp = new Canvas(bmp);
-        canvasTemp.drawColor(Color.BLACK);
-        Paint p = new Paint();
-        String familyName = "宋体";
-        Typeface font = Typeface.create(familyName, Typeface.BOLD);
-        p.setColor(Color.RED);
-        p.setTypeface(font);
-        p.setTextSize(27);
-        canvasTemp.drawText(mstrTitle, 0, 100, p);
+        
     }
 
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-         gl.glViewport(0, 0, width, height);
+    	gl.glViewport(0, 0, width, height);
 
          /*
           * Set our projection matrix. This doesn't have to be done
@@ -105,7 +95,6 @@ class CubeRenderer implements GLSurfaceView.Renderer {
          */
 
     	gl.glDisable(GL10.GL_DITHER);
-
         /*
          * Some one-time OpenGL initialization can be made here
          * probably based on features of this particular context
@@ -116,16 +105,14 @@ class CubeRenderer implements GLSurfaceView.Renderer {
          if (mTranslucentBackground) {
              gl.glClearColor(0,0,0,0);
          } else {
-             gl.glClearColor(1,1,1,1);
+             gl.glClearColor(1,1,1,0);
          }
          gl.glEnable(GL10.GL_CULL_FACE);
          gl.glShadeModel(GL10.GL_SMOOTH);
          gl.glEnable(GL10.GL_DEPTH_TEST);
-     	initBitmap();
      	
     }
     private boolean mTranslucentBackground;
     private Cube mCube;
     private float mAngle;
-    private Bitmap bmp;
 }

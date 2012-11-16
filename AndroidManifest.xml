@@ -13,7 +13,9 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".GlRunin"
-            android:label="@string/title_activity_gl_runin" >
+            android:label="@string/title_activity_gl_runin"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
