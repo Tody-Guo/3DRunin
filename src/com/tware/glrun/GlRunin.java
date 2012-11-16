@@ -64,12 +64,12 @@ public class GlRunin extends Activity {
         	@Override
         	public void run()
         	{
-        		if (hou >= RUNTIME)
-        		{
+        		if (hou >= RUNTIME){
         			uHandler.sendEmptyMessage(1);
-        		}else
-        			uHandler.sendEmptyMessage(0);
         		}
+        		else
+        			uHandler.sendEmptyMessage(0);
+        	}
         };
 
         timer.schedule(task, 1000, 1000);
@@ -81,8 +81,7 @@ public class GlRunin extends Activity {
         		{
         			case 0:
         				currTime = formatter.format(new Date());
-        				if (min>=59)
-        				{
+        				if (min>=59){
         					sec = 0;
         					min = 0;
         					hou ++;
@@ -108,8 +107,7 @@ public class GlRunin extends Activity {
         			timeView.setTextColor(Color.WHITE);
         			timeView.setGravity(Gravity.CENTER);
         			timeView.setText("Pass");
-        			if (timer != null)
-        			{
+        			if (timer != null){
         				timer.cancel();
         				timer = null;
         			}
@@ -126,8 +124,7 @@ public class GlRunin extends Activity {
         			timeView.setTextColor(Color.WHITE);
         			timeView.setGravity(Gravity.CENTER);
         			timeView.setText("Fail");
-        			if (timer != null)
-        			{
+        			if (timer != null){
         				timer.cancel();
         				timer = null;
         			}
@@ -144,8 +141,7 @@ public class GlRunin extends Activity {
         super.onResume();
         mGLSurfaceView.onResume();
         
-        if (mediaplayer != null)
-        {
+        if (mediaplayer != null){
         	mediaplayer.start();
         	Log.e("3D Music", "Playing...");
         }else{
