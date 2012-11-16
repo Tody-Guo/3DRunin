@@ -16,7 +16,6 @@
 
 package com.tware.glrun;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
@@ -65,12 +64,12 @@ public class GlRunin extends Activity {
         	@Override
         	public void run()
         	{
-        		if (min >= 2)
+        		if (hou >= RUNTIME)
         		{
         			uHandler.sendEmptyMessage(1);
         		}else
         			uHandler.sendEmptyMessage(0);
-        		}	
+        		}
         };
 
         timer.schedule(task, 1000, 1000);
@@ -109,6 +108,11 @@ public class GlRunin extends Activity {
         			timeView.setTextColor(Color.WHITE);
         			timeView.setGravity(Gravity.CENTER);
         			timeView.setText("Pass");
+        			if (timer != null)
+        			{
+        				timer.cancel();
+        				timer = null;
+        			}
         			break;
         			
         		case 2:
@@ -122,6 +126,11 @@ public class GlRunin extends Activity {
         			timeView.setTextColor(Color.WHITE);
         			timeView.setGravity(Gravity.CENTER);
         			timeView.setText("Fail");
+        			if (timer != null)
+        			{
+        				timer.cancel();
+        				timer = null;
+        			}
         			break;
         		}
         	}
@@ -175,9 +184,9 @@ public class GlRunin extends Activity {
     private int sec = 0;
     private int min = 0;
     private int hou = 0;
+    private int RUNTIME = 2;
     private String beginTime;
     private String currTime;
     private SimpleDateFormat formatter;
     private MediaPlayer mediaplayer;
-    
 }
