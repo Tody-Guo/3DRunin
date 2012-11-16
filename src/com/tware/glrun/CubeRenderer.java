@@ -19,15 +19,7 @@ package com.tware.glrun;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLUtils;
 import android.util.Log;
 
 /**
