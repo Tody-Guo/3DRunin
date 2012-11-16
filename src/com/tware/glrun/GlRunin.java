@@ -29,6 +29,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -135,25 +136,14 @@ public class GlRunin extends Activity {
         mGLSurfaceView.onResume();
         
         if (mediaplayer != null)
-        {	try {
-				mediaplayer.prepare();
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+        {
         	mediaplayer.start();
+        	Log.e("3D Music", "Playing...");
         }else{
         	mediaplayer = MediaPlayer.create(this, R.raw.neocore2);
         	mediaplayer.setLooping(true);
-			try {
-				mediaplayer.prepare();
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 			mediaplayer.start();
+        	Log.e("3D Music", "Started...");			
         }
     }
 
@@ -163,8 +153,10 @@ public class GlRunin extends Activity {
         // to take appropriate action when the activity looses focus
         super.onPause();
         mGLSurfaceView.onPause();
-        if (mediaplayer!=null)
+        if (mediaplayer!=null){
         	mediaplayer.pause();
+        	Log.e("3D Music", "Paused!");
+        }
     }
     
 	@Override
