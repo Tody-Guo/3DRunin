@@ -118,17 +118,17 @@ public class GlRunin extends Activity {
         		switch (msg.what)
         		{
         			case 0:
+        				sec ++;
         				currTime = formatter.format(new Date());
-        				if (min>=59){
+        				if (min>=60){
         					sec = 0;
         					min = 0;
         					hou ++;
         				}
-        				if(sec>=59){
+        				if(sec>=60){
         					sec = 0;
         					min ++;
         				}
-        				sec ++;
         				timeView.setText("    Runin Time: " + RUNTIME + "Hour(s)"
         						+ "\n   Begin  Time: " + beginTime 
         						+ "\nCurrent  Time: " + currTime
